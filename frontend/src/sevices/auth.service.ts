@@ -20,6 +20,8 @@ export const authAPI = {
   },
 
   logout: async () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
     await api.post('/auth/logout');
   },
 
