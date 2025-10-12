@@ -21,7 +21,7 @@ const Login = () => {
     const result = await login({ email, password });
     
     if (result.success) {
-      Cookies.set("token",result.token);
+      Cookies.set("token",result.token,{expires:7});
       router.push('/');
     } else {
       setError(result.message);
