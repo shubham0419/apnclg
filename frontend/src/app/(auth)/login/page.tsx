@@ -2,6 +2,7 @@
 import { authAPI } from '@/sevices/auth.service';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
+import Cookies from "js-cookie"
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -20,6 +21,7 @@ const Login = () => {
     const result = await login({ email, password });
     
     if (result.success) {
+      Cookies.set("token",result.token);
       router.push('/');
     } else {
       setError(result.message);

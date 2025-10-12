@@ -2,6 +2,7 @@
 import { authAPI } from '@/sevices/auth.service';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
+import Cookies from "js-cookie"
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -46,6 +47,7 @@ const Register = () => {
     });
     
     if (result.success) {
+      Cookies.set("token",result.token);
       router.push('/');
     } else {
       setError(result.message);
